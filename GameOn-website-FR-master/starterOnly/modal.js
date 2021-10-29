@@ -55,6 +55,7 @@ window.onclick = function (e) {
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   validate()
+  // return confirm('heeeyyy')
 })
 
 function validate() {
