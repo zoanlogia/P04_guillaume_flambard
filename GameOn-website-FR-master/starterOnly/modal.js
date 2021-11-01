@@ -84,15 +84,9 @@ const validation = () => {
 
   STATE.qtty > 0 && STATE.qtty !== "" ? isValidDOM(quantity) : isNotValidDOM(quantity)
 
-  if (STATE.cgu == true) {
-    formData[6].classList.remove('error')
-    formData[6].classList.add('success')
-    formData[6].setAttribute('data-error-visible', 'false')
-  } else {
-    formData[6].classList.remove('success')
-    formData[6].classList.add('error')
-    formData[6].setAttribute('data-error-visible', 'true')
-  }
+  STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1)
+
+  STATE.newsLetter == true  ? isValidDOM(checkbox2) : isValidDOM(checkbox2)
 
   // if (STATE.newsLetter == true && STATE.newsLetter == false) {
   //   formData[7].classList.remove('error')
