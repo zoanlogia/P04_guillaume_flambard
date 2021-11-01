@@ -27,7 +27,6 @@ const locations = document.getElementsByName('location')
 const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const checkbox1 = document.getElementById('checkbox1');
 const checkbox2 = document.getElementById('checkbox2');
-const textControl = document.getElementsByClassName('text-control');
 
 
 // launch modal form
@@ -46,8 +45,8 @@ const STATE = {
   birthdate: '',
   qtty: '',
   location: '',
-  cgu: true,
-  newsLetter: false
+  cgu: '',
+  newsLetter: ''
 }
 
 const initState = () => {
@@ -95,11 +94,15 @@ const validation = () => {
     formData[6].setAttribute('data-error-visible', 'true')
   }
 
-  if (STATE.newsLetter == true && STATE.newsLetter == false) {
-    formData[6].classList.remove('error')
-    formData[6].classList.add('success')
-    formData[6].setAttribute('data-error-visible', 'false')
-  }
+  // if (STATE.newsLetter == true && STATE.newsLetter == false) {
+  //   formData[7].classList.remove('error')
+  //   formData[7].classList.add('success')
+  //   formData[7].setAttribute('data-error-visible', 'false')
+  // } else {
+  //   formData[7].classList.remove('error')
+  //   formData[7].classList.add('success')
+  //   formData[7].setAttribute('data-error-visible', 'false')
+  // }
 
   for (var i = 0; i < STATE.location.length; i++) {
     if (STATE.location[i].checked == true) {
@@ -116,10 +119,6 @@ const validation = () => {
   }
 }
 
-
-
-
-
 // ===============================
 //            INIT
 // ===============================
@@ -132,7 +131,6 @@ window.onclick = function (e) {
     modalbg.style.display = "none";
   }
 }
-
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
