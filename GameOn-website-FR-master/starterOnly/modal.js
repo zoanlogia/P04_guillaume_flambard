@@ -10,7 +10,9 @@ function editNav() {
 // ===============================
 //         DECLARATIONS
 // ===============================
+
 // DOM Elements
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.getElementById('form');
@@ -28,14 +30,17 @@ const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\
 const checkbox1 = document.getElementById('checkbox1');
 const checkbox2 = document.getElementById('checkbox2');
 
-
 // launch modal form
+
 function launchModal() {
   modalbg.style.display = "block";
 }
+
 // close modal form
+
 function hide() {
-  modalbg.style.display = "none";
+  modalbg.style.display =
+    "none";
 }
 
 const STATE = {
@@ -50,6 +55,7 @@ const STATE = {
 }
 
 const initState = () => {
+
   STATE.name = firstName.value
   STATE.lastname = lastName.value
   STATE.email = email.value
@@ -61,12 +67,14 @@ const initState = () => {
 }
 
 const isValidDOM = element => {
+
   element.parentElement.classList.remove('error');
   element.parentElement.classList.add('success');
   element.parentElement.setAttribute('data-error-visible', 'false');
 }
 
 const isNotValidDOM = element => {
+
   element.parentElement.classList.remove('success');
   element.parentElement.classList.add('error');
   element.parentElement.setAttribute('data-error-visible', 'true');
@@ -75,36 +83,23 @@ const isNotValidDOM = element => {
 const validation = () => {
 
   STATE.name.length > 2 ? isValidDOM(firstName) : isNotValidDOM(firstName)
-
   STATE.lastname.length > 2 ? isValidDOM(lastName) : isNotValidDOM(lastName)
-
   STATE.email.match(regex) && STATE.email !== "" ? isValidDOM(email) : isNotValidDOM(email)
-
   STATE.birthdate !== "" ? isValidDOM(birthdate) : isNotValidDOM(birthdate)
-
   STATE.qtty > 0 && STATE.qtty !== "" ? isValidDOM(quantity) : isNotValidDOM(quantity)
-
   STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1)
 
-  STATE.newsLetter == true  ? isValidDOM(checkbox2) : isValidDOM(checkbox2)
-
-  // if (STATE.newsLetter == true && STATE.newsLetter == false) {
-  //   formData[7].classList.remove('error')
-  //   formData[7].classList.add('success')
-  //   formData[7].setAttribute('data-error-visible', 'false')
-  // } else {
-  //   formData[7].classList.remove('error')
-  //   formData[7].classList.add('success')
-  //   formData[7].setAttribute('data-error-visible', 'false')
-  // }
 
   for (var i = 0; i < STATE.location.length; i++) {
+
     if (STATE.location[i].checked == true) {
+
       formData[5].classList.remove('error')
       formData[5].classList.add('success')
       formData[5].setAttribute('data-error-visible', 'false')
-      return true
+      return confirm('okk')
     } else {
+
       formData[5].classList.add('error');
       formData[5].classList.remove('success')
       formData[5].setAttribute('data-error-visible', 'true')
@@ -116,10 +111,13 @@ const validation = () => {
 // ===============================
 //            INIT
 // ===============================
+
 // launch modal event
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // on click outside the modal, the modal close
+
 window.onclick = function (e) {
   if (e.target == modalbg) {
     modalbg.style.display = "none";
@@ -130,4 +128,5 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   initState()
   validation()
+
 })
