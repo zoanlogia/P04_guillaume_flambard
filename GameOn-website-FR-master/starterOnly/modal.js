@@ -90,19 +90,20 @@ const validation = () => {
   STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1)
 
 
-  for (var i = 0; i < locations.length; i++) {
+  // for (var i = 0; i < locations.length; i++) {
 
-    if (STATE.location[i].checked == true) {
+  //   if (location[i].length === true) {
 
-      formData[5].classList.remove('error')
-      formData[5].classList.add('success')
-      formData[5].setAttribute('data-error-visible', 'false')
-    } else {
-      formData[5].classList.add('error');
-      formData[5].classList.remove('success')
-      formData[5].setAttribute('data-error-visible', 'true')
-    }
-  }
+  //     formData[5].classList.remove('error')
+  //     formData[5].classList.add('success')
+  //     formData[5].setAttribute('data-error-visible', 'false')
+  //     STATE.location.push(location[i].checked)
+  //   } else {
+  //     formData[5].classList.add('error');
+  //     formData[5].classList.remove('success')
+  //     formData[5].setAttribute('data-error-visible', 'true')
+  //   }
+  // }
 }
 
 // ===============================
