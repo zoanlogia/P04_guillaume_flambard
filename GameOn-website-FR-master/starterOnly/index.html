@@ -53,7 +53,7 @@
 
     <div class="bground">
       <div class="content">
-        <span class="close"></span>
+        <span class="close" onclick="hide()"></span>
         <div class="modal-body">
           <div id="error"></div>
           <form id="form" name="reserve" action="index.html" method="get">
@@ -74,9 +74,9 @@
               <input class="text-control" type="date" id="birthdate" name="birthdate"
                 pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" /><br>
             </div>
-            <div class="formData" data-error="Veuillez entrer un chiffre">
+            <div class="formData" data-error="Veuillez entrer un nombre valide">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" placeholder="3">
+              <input type="number" class="text-control" id="quantity" name="quantity" placeholder="3">
             </div>
             <p class="text-label">Quelles villes ?</p>
             <div class="formData" data-error="Veuillez cocher au moins une ville">

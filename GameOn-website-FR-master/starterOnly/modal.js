@@ -61,7 +61,7 @@ const initState = () => {
   STATE.email = email.value
   STATE.birthdate = birthdate.value
   STATE.qtty = quantity.value
-  STATE.location = locations
+  STATE.location = []
   STATE.cgu = checkbox1.checked
   STATE.newsLetter = checkbox2.checked
 }
@@ -86,24 +86,21 @@ const validation = () => {
   STATE.lastname.length > 2 ? isValidDOM(lastName) : isNotValidDOM(lastName)
   STATE.email.match(regex) && STATE.email !== "" ? isValidDOM(email) : isNotValidDOM(email)
   STATE.birthdate !== "" ? isValidDOM(birthdate) : isNotValidDOM(birthdate)
-  STATE.qtty > 0 && STATE.qtty !== "" ? isValidDOM(quantity) : isNotValidDOM(quantity)
+  STATE.qtty > 0 && STATE.qtty !== "" && STATE.qtty <= 99 && STATE.qtty >= 1 ? isValidDOM(quantity) : isNotValidDOM(quantity)
   STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1)
 
 
-  for (var i = 0; i < STATE.location.length; i++) {
+  for (var i = 0; i < locations.length; i++) {
 
     if (STATE.location[i].checked == true) {
 
       formData[5].classList.remove('error')
       formData[5].classList.add('success')
       formData[5].setAttribute('data-error-visible', 'false')
-      return confirm('okk')
     } else {
-
       formData[5].classList.add('error');
       formData[5].classList.remove('success')
       formData[5].setAttribute('data-error-visible', 'true')
-      return false
     }
   }
 }
@@ -128,5 +125,5 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   initState()
   validation()
-
+  console.log(STATE);
 })
