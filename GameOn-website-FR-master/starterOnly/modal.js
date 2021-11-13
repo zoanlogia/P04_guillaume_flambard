@@ -119,5 +119,5 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   initState();
   validation();
-  console.log(STATE);
+  console.log('RESPONSE :', STATE);
 });
