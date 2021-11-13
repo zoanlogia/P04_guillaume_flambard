@@ -1,5 +1,3 @@
-/** @format */
-
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -82,28 +80,15 @@ const isNotValidDOM = (element) => {
 const validation = () => {
   STATE.name.length > 2 ? isValidDOM(firstName) : isNotValidDOM(firstName);
   STATE.lastname.length > 2 ? isValidDOM(lastName) : isNotValidDOM(lastName);
-  STATE.email.match(regex) && STATE.email !== ""
-    ? isValidDOM(email)
-    : isNotValidDOM(email);
+  STATE.email.match(regex) && STATE.email !== "" ? isValidDOM(email) : isNotValidDOM(email);
   STATE.birthdate !== "" ? isValidDOM(birthdate) : isNotValidDOM(birthdate);
-  STATE.qtty > 0 && STATE.qtty !== "" && STATE.qtty <= 99 && STATE.qtty >= 1
-    ? isValidDOM(quantity)
-    : isNotValidDOM(quantity);
+  STATE.qtty > 0 && STATE.qtty !== "" && STATE.qtty <= 99 && STATE.qtty >= 1 ? isValidDOM(quantity) : isNotValidDOM(quantity);
   STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1);
 
-  // for (let i = 0; i < locations.length; i++) {
-
-  //   if (STATE.location[i] === true) {
-
-  //
-  //     // STATE.location.push(location[i].value)
-  //   } else {
-  //
-  //   }
-  // }
-
   for (let i = 0; locations[i].checked; ++i) {
-    if (STATE.location.value !== '' && STATE.location.length > 0) {
+    STATE.location.push(locations[i].value);
+  }
+  if (STATE.location.value !== "" && STATE.location.length > 0) {
       formData[5].classList.remove("error");
       formData[5].classList.add("success");
       formData[5].setAttribute("data-error-visible", "false");
@@ -112,8 +97,6 @@ const validation = () => {
       formData[5].classList.remove("success");
       formData[5].setAttribute("data-error-visible", "true");
     }
-    STATE.location.push(locations[i].value);
-  }
 };
 
 // ===============================
