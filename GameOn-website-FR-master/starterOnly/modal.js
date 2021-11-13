@@ -103,16 +103,16 @@ const validation = () => {
   // }
 
   for (let i = 0; locations[i].checked; ++i) {
-    STATE.location.push(locations[i].value);
-    if (locations[i].checked) {
+    if (STATE.location.value !== '' && STATE.location.length > 0) {
       formData[5].classList.remove("error");
       formData[5].classList.add("success");
       formData[5].setAttribute("data-error-visible", "false");
     } else {
       formData[5].classList.add("error");
       formData[5].classList.remove("success");
-      formData[5].setAttribute("data-error-visible", "false");
+      formData[5].setAttribute("data-error-visible", "true");
     }
+    STATE.location.push(locations[i].value);
   }
 };
 
