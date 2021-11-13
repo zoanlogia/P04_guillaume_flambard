@@ -25,6 +25,8 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const locations = document.getElementsByName("location");
+const location1 = document.getElementById('location1')
+
 
 const regex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -88,16 +90,10 @@ const validation = () => {
   for (let i = 0; locations[i].checked; ++i) {
     STATE.location.push(locations[i].value);
   }
-  if (STATE.location.value !== "" && STATE.location.length > 0) {
-      formData[5].classList.remove("error");
-      formData[5].classList.add("success");
-      formData[5].setAttribute("data-error-visible", "false");
-    } else {
-      formData[5].classList.add("error");
-      formData[5].classList.remove("success");
-      formData[5].setAttribute("data-error-visible", "true");
-    }
-};
+
+  STATE.location.value !== "" && STATE.location.length > 0 ? isValidDOM(location1) : isNotValidDOM(location1)
+    
+}
 
 // ===============================
 //            INIT
