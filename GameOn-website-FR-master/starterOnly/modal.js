@@ -79,6 +79,18 @@ const isNotValidDOM = (element) => {
   element.parentElement.setAttribute("data-error-visible", "true");
 };
 
+const displayConfirmMessage = () => {
+  const message = document.querySelector('.confirmation')
+  message.style.display = 'block';
+
+  setTimeout(() => {
+    modalbg.style.display = 'none';
+  }, 4000);
+  setTimeout(() => {
+    message.style.display = 'none';
+  }, 3000)
+}
+
 const validation = () => {
   STATE.name.length > 2 ? isValidDOM(firstName) : isNotValidDOM(firstName);
   STATE.lastname.length > 2 ? isValidDOM(lastName) : isNotValidDOM(lastName);
@@ -92,7 +104,11 @@ const validation = () => {
   }
 
   STATE.location.value !== "" && STATE.location.length > 0 ? isValidDOM(location1) : isNotValidDOM(location1)
-    
+
+  const error = document.querySelector('.error')
+  if (error === null) {
+    displayConfirmMessage()
+  }
 }
 
 // ===============================
@@ -116,4 +132,4 @@ form.addEventListener("submit", (e) => {
   initState();
   validation();
   console.log('RESPONSE :', STATE);
-});
+})
