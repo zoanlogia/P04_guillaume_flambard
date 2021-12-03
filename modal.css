@@ -218,8 +218,7 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: center;
 }
 
 
@@ -307,8 +306,9 @@ main {
 }
 
 .modal-body {
-  padding: 15px 8%;
+  padding: 15px 1em;
   margin: 15px auto;
+  width: 100%;
 }
 
 label {

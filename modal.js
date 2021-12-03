@@ -1,3 +1,4 @@
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -25,9 +26,9 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const locations = document.getElementsByName("location");
-const location1 = document.getElementById('location1')
+const location1 = document.getElementById("location1");
 
-
+const pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
 const regex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const checkbox1 = document.getElementById("checkbox1");
@@ -80,36 +81,44 @@ const isNotValidDOM = (element) => {
 };
 
 const displayConfirmMessage = () => {
-  const message = document.querySelector('.confirmation')
-  message.style.display = 'block';
+  const message = document.querySelector(".confirmation");
+  message.style.display = "block";
 
   setTimeout(() => {
-    modalbg.style.display = 'none';
+    modalbg.style.display = "none";
   }, 4000);
   setTimeout(() => {
-    message.style.display = 'none';
-  }, 3000)
-}
+    message.style.display = "none";
+  }, 3000);
+};
 
 const validation = () => {
   STATE.name.length > 2 ? isValidDOM(firstName) : isNotValidDOM(firstName);
   STATE.lastname.length > 2 ? isValidDOM(lastName) : isNotValidDOM(lastName);
-  STATE.email.match(regex) && STATE.email !== "" ? isValidDOM(email) : isNotValidDOM(email);
-  STATE.birthdate !== "" ? isValidDOM(birthdate) : isNotValidDOM(birthdate);
-  STATE.qtty > 0 && STATE.qtty !== "" && STATE.qtty <= 99 && STATE.qtty >= 1 ? isValidDOM(quantity) : isNotValidDOM(quantity);
+  STATE.email.match(regex) && STATE.email !== ""
+    ? isValidDOM(email)
+    : isNotValidDOM(email);
+  STATE.birthdate.match(pattern) && STATE.birthdate.length == 10 && STATE.birthdate !== ""
+    ? isValidDOM(birthdate)
+    : isNotValidDOM(birthdate);
+  STATE.qtty > 0 && STATE.qtty !== "" && STATE.qtty <= 99 && STATE.qtty >= 1
+    ? isValidDOM(quantity)
+    : isNotValidDOM(quantity);
   STATE.cgu == true ? isValidDOM(checkbox1) : isNotValidDOM(checkbox1);
 
   for (let i = 0; locations[i].checked; ++i) {
     STATE.location.push(locations[i].value);
   }
 
-  STATE.location.value !== "" && STATE.location.length > 0 ? isValidDOM(location1) : isNotValidDOM(location1)
+  STATE.location.value !== "" && STATE.location.length > 0
+    ? isValidDOM(location1)
+    : isNotValidDOM(location1);
 
-  const error = document.querySelector('.error')
+  const error = document.querySelector(".error");
   if (error === null) {
-    displayConfirmMessage()
+    displayConfirmMessage();
   }
-}
+};
 
 // ===============================
 //            INIT
@@ -131,5 +140,5 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   initState();
   validation();
-  console.log('RESPONSE :', STATE);
-})
+  console.log("RESPONSE :", STATE);
+});
